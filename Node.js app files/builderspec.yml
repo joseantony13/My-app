@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to CodeArtifact...
+      - aws codeartifact login --tool npm --repository my-repo --domain my-domain --domain-owner 111122223333
+  build:
+    commands:
+      - echo Installing dependencies...
+      - npm ci
+      - echo Build complete
+artifacts:
+  files:
+    - '**/*'
